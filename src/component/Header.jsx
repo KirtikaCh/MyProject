@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HiMenuAlt1 } from 'react-icons/hi';
-
+import img from './images/logo4.png'
+import Login from './Login';
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -8,30 +9,31 @@ const Header = () => {
         setMenuOpen(!menuOpen);
     };
 
+    const [model, setModel] = useState(false);
+
     return (
         <>
             <nav className="bg-black p-4">
                 <div className="container mx-auto">
                     <div className="flex justify-between items-center">
                         <div className="flex items-center">
-                            <div className="logo text-white text-xl font-bold">
-                                Logo
+                            <div className="logo text-[#43591a] text-xl font-bold">
+                                <img src={img} alt="logo" width="200px" height="auto"/>
                             </div>
                             <div className="ml-4 hidden md:block">
                                 <input
                                     type="text"
                                     placeholder="Search"
-                                    className="px-4 py-2 rounded-md outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white border border-gray-500 w-96"
+                                    className="px-5 py-3 rounded-md outline-none focus:ring-2 focus:ring-blue-500 bg-gray-900 text-white border border-[#43591a] w-96"
                                 />
-                                <button className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-md">
+                                <button className="bg-[#43591a] font-medium text-white px-5 py-3 ml-2 rounded-md">
                                     Search
                                 </button>
                             </div>
                         </div>
                         <div className="flex items-center">
                             <div className="hidden md:block">
-                                <button className="text-white px-4 py-2 bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Login</button>
-                                <button className="text-white px-4 py-2 ml-4 bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Signup</button>
+                                <button onClick={() => setModel((ind) => !ind)} className="text-white px-5 py-3 font-medium bg-[#43591a] rounded-md hover:bg-white hover:text-[#43591a] transition duration-300 ease-in-out">Sign in</button>
                             </div>
                             <div className="md:hidden">
                                 <button className="text-white" onClick={toggleMenu}>
@@ -53,15 +55,16 @@ const Header = () => {
                             />
                         </div>
                         <div className="w-1/4 pl-2">
-                            <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-full">
+                            <button className="bg-[#43591a] text-white px-4 py-2 rounded-md w-full">
                                 Search
                             </button>
                         </div>
                     </div>
-                    <button className="block text-left w-full py-2 mt-2 bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Login</button>
-                    <button className="block text-left w-full py-2 mt-2 bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300 ease-in-out">Signup</button>
+                    <button className="block text-left w-full py-2 mt-2 bg-[#43591a] rounded-md hover:bg-white hover:text-[#43591a] transition duration-300 ease-in-out">Sign in</button>
                 </div>
             )}
+
+            {model ? <Login onClick={setModel}/> : ""}
         </>
     );
 };
